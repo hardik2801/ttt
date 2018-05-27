@@ -65,7 +65,6 @@ var AppComponent = /** @class */ (function () {
             .subscribe(function (response) { return _this.data = response.data; }, function (error) { return console.log('Error :: ' + error); }, function () {
             _this.init = false;
             _this.loading = false;
-            console.log(_this.data, 'data');
         });
     };
     AppComponent.prototype.ngOnInit = function () {

@@ -21,10 +21,25 @@ function getFrequency(req, res) {
             data = data.split(/\s+/);
 
             data.forEach(function (datum) {
-                if (wordDict[datum]) {
-                    wordDict[datum] += 1;
-                } else {
-                    wordDict[datum] = 1;
+                datum = datum.toLowerCase();
+                datum = datum.replace(/[`~!@#$%^&*()_|+\-=÷¿?;:'",.<>\{\}\[\]\\\/]/gi, ' ').trim();
+                if (datum) {
+                    if (datum.indexOf(' ') >= 0) {
+                        datum = datum.split(/\s+/);
+                        datum.forEach(function (childDatum) {
+                            if (wordDict[childDatum]) {
+                                wordDict[childDatum] += 1;
+                            } else {
+                                wordDict[childDatum] = 1;
+                            }
+                        });
+                    } else {
+                        if (wordDict[datum]) {
+                            wordDict[datum] += 1;
+                        } else {
+                            wordDict[datum] = 1;
+                        }
+                    }
                 }
             });
 
@@ -39,7 +54,7 @@ function getFrequency(req, res) {
                 return b[1] - a[1];
             });
 
-                return res.json(ResponseUtils.responseMessage(true, 'success', toSort.slice(0, count)));
+            return res.json(ResponseUtils.responseMessage(true, 'success', toSort.slice(0, count)));
         });
 
     }).on("error", (err) => {
