@@ -10,6 +10,6 @@ module.exports = function (app) {
 	
 	app.use('/api', appRequire('api.ttt'));
 
-	// app.use('*', express.static(path.join(config.root, 'client', 'dist')));
+	app.use('*', express.static(path.join(config.root, 'client', 'dist')));
 	
 };
