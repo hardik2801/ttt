@@ -3,11 +3,7 @@ var environment = process.env.NODE_ENV || 'development';
 
 var config = {   
     
-    root : path.normalize(__dirname + './../../../'),
-    secret:'peoplegrovesecret',
-    mongoose : {
-        uri : 'mongodb://127.0.0.1/pg'
-    },
+    root : path.normalize(__dirname + './../../../')
 };
 
 function merge(config, env){
