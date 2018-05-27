@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12 manual-input">
+    View Top
+    <input type="number"  class="num-input" [(ngModel)]="count"> Words
+    <button type="button" class="btn btn-primary" (click)="getData()"> Get'em </button>
+  </div>
+</div>
+<section class="content" *ngIf="!init && !loading">
+  <div class="col-md-12 manual-input">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Word</th>
+          <th class="text-center">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let word of data, let i = index;">
+          <td>{{ i+1 }}</td>
+          <td>{{word[0]}}</td>
+          <td>{{word[1]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<div class="loading" *ngIf="loading"></div>
